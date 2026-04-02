@@ -6,7 +6,7 @@ module.exports = new Pool({
   user: "marijaavramovic",
   database: "members_only",
   password: "",
-  port: 4441
+  port: 5432
 });
 
  

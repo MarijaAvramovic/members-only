@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Only</title>
+</head>
+<body>
+    <h1>Messages</h1>
+     
+        <% messages.forEach(message => { %>
+             <div>
+                <h2><%= message.title %></h2>
+                <p><%= message.author %></p>
+                <p><%= message.text %></p>
+                <p><%= message.timestamp.toLocaleDateString() %></p>
+                <p><%= message.timestamp.toLocaleTimeString() %></p>
+             </div><span>delete</span>
+        <% }); %>
+   
+</body>
+</html>
