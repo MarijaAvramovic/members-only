@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if (user) { %>
+        <h1>Welcome, <%= user.name %>!</h1>
+        <p>Last Name: <%= user.last_name %></p>
+        <p>Username: <%= user.username %></p>
+        <% if (user.is_admin === false) { %>
+           <form action="/createAdmin" method="POST">
+             <button type="submit">Create Admin</button>
+           </form>
+        <% } %>
+
+        <% } else { %>
+            <h1>Welcome to the Dashboard</h1>
+            <p>Please log in to see your information.</p>
+        <% } %>
+</body>
+</html>

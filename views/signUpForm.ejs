@@ -6,6 +6,14 @@
 <body>
   <h1>Create Account</h1>
 
+  <% if (errors.length > 0) { %>
+    <ul style="color: red;">
+      <% errors.forEach(function(error) { %>
+        <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+  <% } %>
+
   <form action="/signup" method="POST">
     <div>
       <label>First Name:</label>

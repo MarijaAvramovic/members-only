@@ -1,4 +1,9 @@
+const e = require('express');
 const db = require('../db/queries');
+ 
+ 
+ 
+
 
 async function getMessages(req, res) {
     try {
@@ -9,12 +14,28 @@ async function getMessages(req, res) {
         res.status(500).send('Internal Server Error');
     }
 }
+async function getDashboard(req, res) {
+    res.render('dashboard', { user: req.user });
+}
 
 async function signUpGet(req, res) {
-    res.render('signUpForm');
+    res.render('signUpForm',  { errors: [] });
 };
+
+async function createUser(req, res) {
+     const { name, last_name, username, password } = req.validatedData;
+    try {
+        const newUser = await db.createUser(name, last_name, username, password);
+        res.render('dashboard', { user: newUser, errors: [] });
+    } catch (error) {
+        console.error('Error creating user:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}
 
 module.exports = {
     getMessages,
-    signUpGet
+    getDashboard,
+    signUpGet,
+    createUser
 };
