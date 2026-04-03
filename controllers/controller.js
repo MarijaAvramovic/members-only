@@ -9,14 +9,14 @@ async function getMessages(req, res) {
     try {
         const messages = await db.getAllMessages();
         res.render('index', { messages });
-        console.log(messages);
+        
     } catch (error) {
         console.error('Error fetching messages:', error);
         res.status(500).send('Internal Server Error');
     }
 }
 async function getDashboard(req, res) {
-    res.render('dashboard', { user: req.user });
+    res.render('dashboard', { user: req.user, errorsJoin: [] });
 }
 
 async function signUpGet(req, res) {
@@ -28,7 +28,7 @@ async function createUser(req, res) {
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await db.createUser(name, last_name, username, hashedPassword);
-        res.render('dashboard', { user: newUser, errors: [] });
+        res.render('dashboard', { user: newUser, errors: [] , errorsJoin: []});
     } catch (error) {
         console.error('Error creating user:', error);
         res.status(500).send('Internal Server Error');
@@ -47,10 +47,40 @@ async function addMessage(req, res) {
     }
 }
 
+async function join(req, res) {
+    
+     const errorsJoin = req.validationErrors || [];
+
+     if (errorsJoin.length > 0) {
+        return res.render('dashboard', { 
+            user: req.user, 
+            errorsJoin: errorsJoin 
+        });
+    }
+
+    try {
+        const updatedUser = await db.updateStatus(req.user.id);    
+
+        res.render('dashboard', { 
+            user: updatedUser, 
+            errorsJoin: [] 
+        });
+    } catch (error) {
+        console.error('Error updating membership status:', error);
+        res.status(500).send('Failed to update your membership. Nice one.');
+    }
+    
+    
+       
+};
+
+
+
 module.exports = {
     getMessages,
     getDashboard,
     signUpGet,
     createUser,
-    addMessage
+    addMessage,
+    join
 };

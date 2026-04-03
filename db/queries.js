@@ -30,10 +30,16 @@ async function addMessage(title, text, user_id) {
     return result.rows[0];
 };
 
+async function updateStatus(user_id) {
+    const result = await pool.query(`UPDATE users SET membership_status = 'member' WHERE id = $1 RETURNING *`, [user_id]);
+    return result.rows[0];
+}
+
 module.exports = {
     getAllMessages,
     createUser,
     findUserByUsername,
     findUserById,
-    addMessage
+    addMessage,
+    updateStatus
 }; 
