@@ -1,7 +1,7 @@
+const path = require('path');
 const express = require('express');
 const router = require('./routes/router');
 const app = express();
-const path = require('path');
 app.use(express.urlencoded({ extended: true }));
 
 
