@@ -10,6 +10,11 @@ async function getMessages(req, res) {
     }
 }
 
+async function signUpGet(req, res) {
+    res.render('signUpForm');
+};
+
 module.exports = {
     getMessages,
+    signUpGet
 };
