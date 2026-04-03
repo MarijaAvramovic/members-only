@@ -7,8 +7,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use((req, res, next) => {
+    res.locals.user = req.user || null;
+    next();
+}
+
 app.use('/', router);
 
 const PORT = process.env.PORT || 4441;
