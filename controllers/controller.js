@@ -1,4 +1,4 @@
-const e = require('express');
+
 const db = require('../db/queries');
  const bcrypt = require("bcryptjs");
  
@@ -35,10 +35,20 @@ async function createUser(req, res) {
 }
 
 async function addMessage(req, res) {
+    const { title, text } = req.validatedData;
+    try {
+        const newMessage = await db.addMessage(title, text, req.user.user_id);
+        res.redirect('/');
+    } catch (error) {
+        console.error('Error adding message:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}
 
 module.exports = {
     getMessages,
     getDashboard,
     signUpGet,
     createUser,
+    addMessage
 };
