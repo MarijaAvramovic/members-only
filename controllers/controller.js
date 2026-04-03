@@ -1,6 +1,6 @@
 const e = require('express');
 const db = require('../db/queries');
- 
+ const bcrypt = require("bcryptjs");
  
  
 
@@ -25,7 +25,8 @@ async function signUpGet(req, res) {
 async function createUser(req, res) {
      const { name, last_name, username, password } = req.validatedData;
     try {
-        const newUser = await db.createUser(name, last_name, username, password);
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = await db.createUser(name, last_name, username, hashedPassword);
         res.render('dashboard', { user: newUser, errors: [] });
     } catch (error) {
         console.error('Error creating user:', error);
