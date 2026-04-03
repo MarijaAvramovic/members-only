@@ -8,7 +8,14 @@ const router = require('./routes/router');
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.set('view engine', 'ejs');
