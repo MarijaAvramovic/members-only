@@ -1,13 +1,14 @@
 # members-only
 
 
-In this project includes an exclusive clubhouse app where members can write anonymous posts. Inside the clubhouse, members can see who the author of a post is, but outside they can only see the story and wonder who wrote it.
-
 Anyone who comes to the site is able to see a list of all messages, with the author’s name hidden. Users can sign-up and create messages, but ONLY users that are members are able to see the author and date of each message. Admin user is able to see everything and also has the ability to delete messages.
 
-The main purpose is to use the authentication skills and practicing PostgreSQL database skills.
 
-I have 2 tables 
+In this project includes an exclusive clubhouse app where members can write anonymous posts. Inside the clubhouse, members can see who the author of a post is, but outside they can only see the story and wonder who wrote it.
+
+The main purpose is to use the authentication skills, practicing PostgreSQL database skills, creating and authenticating users and giving users different abilities and permissions.
+
+in db 2 tables:
 1. users with full-names (first and last), usernames (used email for this), passwords and membership-status. Users are able to create messages that have a title, a timestamp and some text. 
 2. messages: title, a timestamp and some text. It keeps track of who created each message.
 
@@ -25,5 +26,5 @@ All messages are on the home page, but the author and date of the messages are v
 User has the ability to delete messages only is is admin, users who have admin == true can see the delete-button and delete messages. On dashboard page mark a user as an ‘admin’ with another secret pass-code (admin).
 
 
-Obviously this is a silly little app, but the things you are practicing (creating and authenticating users and giving users different abilities and permissions) are things that will be very useful to you!
+
 When you’re satisfied with your work, deploy your project on your chosen PaaS (list of PaaS providers from the Deployment lesson) and share it below!

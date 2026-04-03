@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Members Only</title>
-</head>
-<body>
+ 
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/login">Login</a>
-        <a href="/signup">Sign up</a>
-        <a href="/dashboard">Dashboard</a>
-    </nav>
+<%- include('partials/head') %>
 
+<%- include('partials/nav') %>
 
-<div>
-    <h1>Login</h1>
-    <h2>
+ <main>
+    <div class="container">
+         
+         
         <% if (user) { %>
             Welcome, <%= user.username %>!
-
-            <div>
-    <h2>Send Message</h2>
+            <p>Comment...</p>
+            
+   
     <form method="POST" action="/add-message">
         <input name="title" placeholder="Title" required />
         <textarea name="text" placeholder="Message text" required></textarea>
@@ -85,6 +75,13 @@
                         <% } %>
             </span>
         <% }); %>
+
+         
+    </div>
+</main>
+
+ 
+    
+    
    
-</body>
-</html>
+ <%- include('partials/footer') %>
