@@ -13,7 +13,7 @@ router.post('/signup', userValidationRules, validateUser, controller.createUser)
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/dashboard",
+    successRedirect: "/",
     failureRedirect: "/",
   })
 );

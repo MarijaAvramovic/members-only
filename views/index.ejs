@@ -17,12 +17,30 @@
 
 <div>
     <h1>Login</h1>
+    <h2>
+        <% if (user) { %>
+            Welcome, <%= user.username %>!
+
+            <div>
+    <h2>Send Message</h2>
+    <form method="POST" action="/message">
+        <input name="title" placeholder="Title" required />
+        <textarea name="text" placeholder="Message text" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+        <% } else { %>
+            Please log in to send messages.
+        <% } %>
+    </h2>
 
 <form method="POST" action="/login">
   <input name="username" placeholder="Username" required />
   <input type="password" name="password" placeholder="Password" required />
   <button type="submit">Login</button>
 </form>
+
 </div>
     <h1>Messages</h1>
      

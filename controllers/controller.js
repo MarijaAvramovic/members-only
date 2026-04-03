@@ -34,6 +34,8 @@ async function createUser(req, res) {
     }
 }
 
+async function addMessage(req, res) {
+
 module.exports = {
     getMessages,
     getDashboard,

@@ -9,11 +9,11 @@ I have 2 tables
 1. users with full-names (first and last), usernames (used email for this), passwords and membership-status. Users are able to create messages that have a title, a timestamp and some text. 
 2. messages: title, a timestamp and some text. It keeps track of who created each message.
 
+About sign-up form: sanitize and validate the form fields and secure the passwords with bcrypt. Has confirmPassword field to validate it using express-validator.
 
- 
-With a sign-up form, users gets sanitize and validate the form fields and secure the passwords with bcrypt. You should add a confirmPassword field to your sign-up form and then validate it using a custom validator.
+When users sign up they automatically get access to add new msg. However membership status is not letting them view who wrote other msgs.
 
-When users sign up, they should not be automatically given membership status! What fun is a private club if just anyone can join? Add a page where members can “join the club” by entering a secret passcode. If they enter the passcode correctly then update their membership status.
+What fun is a private club if just anyone can join? Add a page where members can “join the club” by entering a secret passcode. If they enter the passcode correctly then update their membership status.
 Create a login-form using passport.js like we did in the last assignment.
 When a user is logged in give them a link to “Create a new message” (but only show it if they’re logged in!). Create the new-message form.
 Display all member messages on the home page, but only show the author and date of the messages to other club-members.
