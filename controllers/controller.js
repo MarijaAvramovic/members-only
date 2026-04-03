@@ -16,7 +16,7 @@ async function getMessages(req, res) {
     }
 }
 async function getDashboard(req, res) {
-    res.render('dashboard', { user: req.user, errorsJoin: [] });
+    res.render('dashboard', { user: req.user, errorsJoin: [], errorsAdmin: [] });
 }
 
 async function signUpGet(req, res) {
@@ -28,7 +28,7 @@ async function createUser(req, res) {
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await db.createUser(name, last_name, username, hashedPassword);
-        res.render('dashboard', { user: newUser, errors: [] , errorsJoin: []});
+        res.render('dashboard', { user: newUser, errors: [] , errorsJoin: [], errorsAdmin: []});
     } catch (error) {
         console.error('Error creating user:', error);
         res.status(500).send('Internal Server Error');
@@ -54,7 +54,8 @@ async function join(req, res) {
      if (errorsJoin.length > 0) {
         return res.render('dashboard', { 
             user: req.user, 
-            errorsJoin: errorsJoin 
+            errorsJoin: errorsJoin,
+            errorsAdmin: []
         });
     }
 
@@ -63,17 +64,41 @@ async function join(req, res) {
 
         res.render('dashboard', { 
             user: updatedUser, 
-            errorsJoin: [] 
+            errorsJoin: [] ,
+            errorsAdmin: []
         });
     } catch (error) {
         console.error('Error updating membership status:', error);
         res.status(500).send('Failed to update your membership. Nice one.');
     }
-    
-    
-       
-};
+}
 
+async function adminEdit(req, res) {
+    
+     const errorsAdmin = req.validationErrors || [];
+
+     if (errorsAdmin.length > 0) {
+        return res.render('dashboard', { 
+            user: req.user, 
+            errorsJoin: [] ,
+            errorsAdmin: errorsAdmin
+        });
+    }
+
+    try {
+        const updatedUser = await db.updateAdmin(req.user.id);    
+
+        res.render('dashboard', { 
+            user: updatedUser, 
+            errorsJoin: [], 
+            errorsAdmin: []
+        });
+    } catch (error) {
+        console.error('Error updating membership status:', error);
+        res.status(500).send('Failed to update your membership. Nice one.');
+    }
+}
+ 
 
 
 module.exports = {
@@ -82,5 +107,6 @@ module.exports = {
     signUpGet,
     createUser,
     addMessage,
-    join
+    join,
+    adminEdit
 };

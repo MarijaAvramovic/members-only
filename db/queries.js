@@ -35,11 +35,17 @@ async function updateStatus(user_id) {
     return result.rows[0];
 }
 
+async function updateAdmin(user_id) {
+    const result = await pool.query(`UPDATE users SET admin = true WHERE id = $1 RETURNING *`, [user_id]);
+    return result.rows[0];
+}
+
 module.exports = {
     getAllMessages,
     createUser,
     findUserByUsername,
     findUserById,
     addMessage,
-    updateStatus
+    updateStatus,
+    updateAdmin
 }; 
