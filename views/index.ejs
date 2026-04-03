@@ -57,7 +57,7 @@
 
                 <p>
                     
-                     <% if (user && (message.user_id === user.id || user.membership_status === 'member')) { %>
+                     <% if (user && (message.user_id === user.id || user.membership_status === 'member' || user.is_admin === true)) { %>
                         Posted by: <%= message.user_username %>
                       <%= message.timestamp.toLocaleDateString() %> 
                <%= message.timestamp.toLocaleTimeString()   %> 
@@ -75,7 +75,12 @@
 
 
                 
-             </div><span>delete</span>
+             </div><span>          
+            
+                 <% if (user && user.is_admin) { %>
+                        <a href="/delete">Delete</a>
+                        <% } %>
+            </span>
         <% }); %>
    
 </body>

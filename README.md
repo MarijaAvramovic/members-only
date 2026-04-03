@@ -3,6 +3,8 @@
 
 In this project includes an exclusive clubhouse app where members can write anonymous posts. Inside the clubhouse, members can see who the author of a post is, but outside they can only see the story and wonder who wrote it.
 
+Anyone who comes to the site is able to see a list of all messages, with the author’s name hidden. Users can sign-up and create messages, but ONLY users that are members are able to see the author and date of each message. Admin user is able to see everything and also has the ability to delete messages.
+
 The main purpose is to use the authentication skills and practicing PostgreSQL database skills.
 
 I have 2 tables 
@@ -20,6 +22,8 @@ When a user is logged in on Home page user can add new msg - (only present if us
 
 All messages are on the home page, but the author and date of the messages are visibe to other club-members only.
 
-Add an optional field to the user model called Admin and then add the ability to delete messages, but only allow users who have admin == true to see the delete-button and delete messages. You’ll need to add a way to actually mark a user as an ‘admin’ so either add another secret pass-code page, or just put an “is admin” checkbox on the sign-up form.
-By this point, anyone who comes to the site should be able to see a list of all messages, with the author’s name hidden. Users should be able to sign-up and create messages, but ONLY users that are members should be able to see the author and date of each message. Finally, you should have an Admin user that is able to see everything and also has the ability to delete messages. Obviously this is a silly little app, but the things you are practicing (creating and authenticating users and giving users different abilities and permissions) are things that will be very useful to you!
+User has the ability to delete messages only is is admin, users who have admin == true can see the delete-button and delete messages. On dashboard page mark a user as an ‘admin’ with another secret pass-code (admin).
+
+
+Obviously this is a silly little app, but the things you are practicing (creating and authenticating users and giving users different abilities and permissions) are things that will be very useful to you!
 When you’re satisfied with your work, deploy your project on your chosen PaaS (list of PaaS providers from the Deployment lesson) and share it below!

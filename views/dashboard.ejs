@@ -34,7 +34,11 @@
 
              <button type="submit">Create Admin</button>
            </form>
-       <% } %>
+     
+        <% } else { %>
+           
+            <p>You can delete msg now as admin</p>
+        <% } %>
 
 
             <% if (user.membership_status === 'regular') { %>
