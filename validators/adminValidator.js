@@ -1,17 +1,16 @@
 const { body, validationResult, matchedData } = require("express-validator");
+ 
 
-
-
-const joinValidationRules = [
-    body('joinPasscode')    
+const adminValidationRules = [
+    body('adminPasscode')    
     .trim()
         .notEmpty().withMessage('Passcode is required')
-        .equals(process.env.JOIN_PASSCODE).withMessage('Wrong passcode!'),
+        .equals(process.env.ADMIN_PASSCODE).withMessage('Wrong passcode!'),
  
 ];
 
 
-const validateJoin = (req, res, next) => {
+const validateAdmin = (req, res, next) => {
     const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -24,6 +23,6 @@ const validateJoin = (req, res, next) => {
 };
 
 module.exports = {
-    validateJoin,
-    joinValidationRules
+     validateAdmin,
+     adminValidationRules
 };
