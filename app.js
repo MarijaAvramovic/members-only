@@ -1,8 +1,14 @@
 const path = require('path');
 const express = require('express');
+const session = require('express-session');
+const passport = require('./config/passport');
 const router = require('./routes/router');
+
+
 const app = express();
 app.use(express.urlencoded({ extended: true }));
+
+
 
 
 app.set('view engine', 'ejs');
