@@ -1,8 +1,10 @@
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const passport = require('./config/passport');
 const router = require('./routes/router');
+
 
 
 const app = express();
@@ -12,6 +14,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
+   
 }));
 
 app.use(passport.initialize());
@@ -25,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) => {
     res.locals.user = req.user || null;
     next();
-}
+});
 
 app.use('/', router);
 

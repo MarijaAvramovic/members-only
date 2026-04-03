@@ -37,5 +37,5 @@ module.exports = {
     getMessages,
     getDashboard,
     signUpGet,
-    createUser
+    createUser,
 };

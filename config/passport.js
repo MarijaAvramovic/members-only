@@ -1,6 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
- 
+
 const db = require('../db/queries'); 
 
 passport.use(
@@ -12,7 +12,7 @@ passport.use(
         return done(null, false, { message: "Incorrect username" });
       }
 
-         const match = await db.comparePassword(password, user.password);
+         const match =  password === user.password;  
 
       if (!match) {
         return done(null, false, { message: "Incorrect password" });
