@@ -48,7 +48,10 @@
              <div>
                 <h2><%= message.title %></h2>
                 <p>
-                    <% message.user_id ? message.user_id.name : 'Unknown User' %>
+                    
+                     <% if (user && message.user_id === user.id) { %>
+                        Posted by: <%= message.user_username %>
+                     <% } %>
                 </p>
                 <p><%= message.text %></p>
                 <p><%= message.timestamp.toLocaleDateString() %></p>
