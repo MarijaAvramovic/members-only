@@ -32,14 +32,15 @@
 
         <% } else { %>
             Please log in to send messages.
-        <% } %>
-    </h2>
-
-<form method="POST" action="/login">
+            <form method="POST" action="/login">
   <input name="username" placeholder="Username" required />
   <input type="password" name="password" placeholder="Password" required />
   <button type="submit">Login</button>
 </form>
+        <% } %>
+    </h2>
+
+ 
 
 </div>
     <h1>Messages</h1>
@@ -47,15 +48,33 @@
         <% messages.forEach(message => { %>
              <div>
                 <h2><%= message.title %></h2>
+                
+                <p><%= message.text %></p>
+
+
+
+
+
                 <p>
                     
-                     <% if (user && message.user_id === user.id) { %>
-                        Posted by: YOU <%= message.user_username %>
-                     <% } %>
+                     <% if (user && (message.user_id === user.id || user.membership_status === 'member')) { %>
+                        Posted by: <%= message.user_username %>
+                      <%= message.timestamp.toLocaleDateString() %> 
+               <%= message.timestamp.toLocaleTimeString()   %> 
+               <% } %>
+                    
+
+
+                     
+
                 </p>
-                <p><%= message.text %></p>
-                <p><%= message.timestamp.toLocaleDateString() %></p>
-                <p><%= message.timestamp.toLocaleTimeString() %></p>
+
+
+
+
+
+
+                
              </div><span>delete</span>
         <% }); %>
    
