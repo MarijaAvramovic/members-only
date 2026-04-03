@@ -47,7 +47,9 @@
         <% messages.forEach(message => { %>
              <div>
                 <h2><%= message.title %></h2>
-                <p><%= message.author %></p>
+                <p>
+                    <% message.user_id ? message.user_id.name : 'Unknown User' %>
+                </p>
                 <p><%= message.text %></p>
                 <p><%= message.timestamp.toLocaleDateString() %></p>
                 <p><%= message.timestamp.toLocaleTimeString() %></p>

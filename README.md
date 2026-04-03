@@ -11,9 +11,10 @@ I have 2 tables
 
 About sign-up form: sanitize and validate the form fields and secure the passwords with bcrypt. Has confirmPassword field to validate it using express-validator.
 
-When users sign up they automatically get access to add new msg. However membership status is not letting them view who wrote other msgs.
+When users sign up they automatically get access to add new msg option. However membership status is not letting them view who wrote other msgs.
 
-What fun is a private club if just anyone can join? Add a page where members can “join the club” by entering a secret passcode. If they enter the passcode correctly then update their membership status.
+On dashboard page members can “join the club” by entering a secret passcode - "401". App will update their membership status and they will be able to see who wrote other msgs.
+
 Create a login-form using passport.js like we did in the last assignment.
 When a user is logged in give them a link to “Create a new message” (but only show it if they’re logged in!). Create the new-message form.
 Display all member messages on the home page, but only show the author and date of the messages to other club-members.

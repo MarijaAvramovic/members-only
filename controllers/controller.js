@@ -9,6 +9,7 @@ async function getMessages(req, res) {
     try {
         const messages = await db.getAllMessages();
         res.render('index', { messages });
+        console.log(messages);
     } catch (error) {
         console.error('Error fetching messages:', error);
         res.status(500).send('Internal Server Error');
@@ -36,8 +37,9 @@ async function createUser(req, res) {
 
 async function addMessage(req, res) {
     const { title, text } = req.validatedData;
+    user_id = req.user.id;
     try {
-        const newMessage = await db.addMessage(title, text, req.user.user_id);
+        const newMessage = await db.addMessage(title, text, user_id);
         res.redirect('/');
     } catch (error) {
         console.error('Error adding message:', error);
