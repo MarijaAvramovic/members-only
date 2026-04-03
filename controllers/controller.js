@@ -98,6 +98,24 @@ async function adminEdit(req, res) {
         res.status(500).send('Failed to update your membership. Nice one.');
     }
 }
+
+  async function deleteMessage(req, res) {
+    
+   
+    try {
+        const messageId = req.params.id;
+
+       
+        await db.deleteMessage(messageId);
+      
+
+        res.redirect('/');  
+
+    } catch (error) {
+        console.error("Error deleting message:", error);
+        res.status(500).send("Error deleting message");
+    }
+};
  
 
 
@@ -108,5 +126,6 @@ module.exports = {
     createUser,
     addMessage,
     join,
-    adminEdit
+    adminEdit,
+    deleteMessage
 };

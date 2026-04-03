@@ -40,6 +40,13 @@ async function updateAdmin(user_id) {
     return result.rows[0];
 }
 
+async function deleteMessage(id) {
+    const result = await pool.query('DELETE FROM messages WHERE id = $1', [id]);
+    return result.rows[0];
+}
+
+
+ 
 module.exports = {
     getAllMessages,
     createUser,
@@ -47,5 +54,6 @@ module.exports = {
     findUserById,
     addMessage,
     updateStatus,
-    updateAdmin
+    updateAdmin,
+    deleteMessage
 }; 

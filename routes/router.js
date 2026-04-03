@@ -38,4 +38,7 @@ router.post('/join',joinValidationRules, validateJoin, controller.join);
 
 router.post('/createAdmin', adminValidationRules, validateAdmin, controller.adminEdit);
 
+
+router.get('/messages/:id/delete', controller.deleteMessage);
+
 module.exports = router;
