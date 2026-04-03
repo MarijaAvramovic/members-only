@@ -18,6 +18,17 @@
 
 
         <% if (user.is_admin === false) { %>
+
+            <% if (errorsAdmin && errorsAdmin.length > 0) { %>
+    <ul style="color: red;">
+      <% errorsAdmin.forEach(function(error) { %>
+        <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+  <% } %>
+
+
+
            <form action="/createAdmin" method="POST">
             <input type="text" name="adminPasscode" placeholder="Admin Passcode" id="adminPasscode" required/>
 

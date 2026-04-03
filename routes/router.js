@@ -36,6 +36,6 @@ router.post('/add-message', msgValidationRules, validateMsg, controller.addMessa
 
 router.post('/join',joinValidationRules, validateJoin, controller.join);
 
-router.post('/createAdmin', adminValidationRules, validateAdmin, adminEdit);
+router.post('/createAdmin', adminValidationRules, validateAdmin, controller.adminEdit);
 
 module.exports = router;
