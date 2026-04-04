@@ -1,12 +1,13 @@
 <nav>
-    <a href="/">Home</a>
+    <a href="/" class="flexleft">Home</a>
       <% if (!user) { %>
         <a href="/signup">Sign up</a>
     <% } %>
-    <a href="/dashboard">Dashboard</a>
+    
     <% if (user) { %>
         <a href="/logout">Logout</a>
     <% } %>
+    <a href="/dashboard">Dashboard</a>
 </nav>
 
 

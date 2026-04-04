@@ -23,8 +23,9 @@ When a user is logged in on Home page user can add new msg - (only present if us
 
 All messages are on the home page, but the author and date of the messages are visibe to other club-members only.
 
-User has the ability to delete messages only is is admin, users who have admin == true can see the delete-button and delete messages. On dashboard page mark a user as an ‘admin’ with another secret pass-code (admin).
+User has the ability to delete messages only as an admin, users who have admin == true can see the delete-button and delete messages. On dashboard page mark a user as an ‘admin’ with another secret pass-code (admin).
 
 
 
+form  sign up, messages sign up
 When you’re satisfied with your work, deploy your project on your chosen PaaS (list of PaaS providers from the Deployment lesson) and share it below!

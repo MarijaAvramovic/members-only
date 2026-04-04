@@ -5,35 +5,43 @@
 <%- include('partials/nav') %>
 
  <main>
+
     <div class="container">
-         
-         
-        <% if (user) { %>
-            Welcome, <%= user.username %>!
-            <p>Comment...</p>
+
+         <div>
+             <% if (user) { %>
+    
+      
             
    
-    <form method="POST" action="/add-message">
-        <input name="title" placeholder="Title" required />
+    <form class="addmessage-form"  method="POST" action="/add-message">
+        <input name="title" placeholder="Title" required type="text" />
         <textarea name="text" placeholder="Message text" required></textarea>
         <button type="submit">Send</button>
     </form>
-</div>
-
         <% } else { %>
-            Please log in to send messages.
-            <form method="POST" action="/login">
-  <input name="username" placeholder="Username" required />
+         </div>
+         
+       
+ 
+       
+
+ 
+  
+     <div>    
+        
+ <form class="login-form" method="POST" action="/login">
+  <input type="text" name="username" placeholder="Username" required />
   <input type="password" name="password" placeholder="Password" required />
   <button type="submit">Login</button>
 </form>
+
         <% } %>
-    </h2>
-
- 
-
 </div>
-    <h1>Messages</h1>
+
+            <div>
+                <h1>Messages</h1>
+
      
         <% messages.forEach(message => { %>
              <div>
@@ -75,9 +83,23 @@
                         <% } %>
             </span>
         <% }); %>
+            </div>
+     
 
          
-    </div>
+     
+</div>
+
+    
+
+ 
+
+</div>
+
+
+
+
+    
 </main>
 
  
