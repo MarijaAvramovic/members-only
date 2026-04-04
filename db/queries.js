@@ -2,10 +2,21 @@ const pool = require('../db/pool');
 
 async function getAllMessages() {
      const result = await pool.query(`
-    SELECT m.*, u.*
+      SELECT 
+      m.id AS message_id,
+      m.title,
+      m.text,
+      m.timestamp,
+      m.user_id AS message_user_id,
+      u.id AS user_id,
+      u.name,
+      u.last_name,
+      u.username,
+      u.is_admin,
+      u.membership_status
     FROM messages m
     LEFT JOIN users u ON m.user_id = u.id
-  `);   
+  `);
     return result.rows;
 }
 
@@ -41,7 +52,7 @@ async function updateAdmin(user_id) {
 }
 
 async function deleteMessage(id) {
-    const result = await pool.query('DELETE FROM messages WHERE id = $1', [id]);
+    const result = await pool.query('DELETE FROM messages WHERE id = $1 RETURNING *', [id]);
     return result.rows[0];
 }
 

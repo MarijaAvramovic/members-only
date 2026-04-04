@@ -8,7 +8,7 @@ const db = require('../db/queries');
 async function getMessages(req, res) {
     try {
         const messages = await db.getAllMessages();
-        console.log(messages)
+     
         res.render('index', { messages });
         
     } catch (error) {
@@ -105,10 +105,10 @@ async function adminEdit(req, res) {
    
     try {
         const messageId = req.params.id;
-
-       
-        await db.deleteMessage(messageId);
-      
+console.log("Attempting to delete ID:", messageId);
+      const deleted = await db.deleteMessage(messageId);
+      console.log("Attempting to delete ID:", messageId);
+console.log('Deleted message:', deleted);
 
         res.redirect('/');  
 
