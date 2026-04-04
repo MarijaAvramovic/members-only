@@ -1,5 +1,8 @@
 # members-only
 
+Live demo: https://members-only-brld.onrender.com/
+
+![App Screenshot](./public/Screenshot%202026-04-04%20at%2011.57.26%20AM.png)
 
 Anyone who comes to the site is able to see a list of all messages, with the author’s name hidden. Users can sign-up and create messages, but ONLY users that are members are able to see the author and date of each message. Admin user is able to see everything and also has the ability to delete messages.
 
