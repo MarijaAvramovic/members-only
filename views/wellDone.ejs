@@ -1,0 +1,26 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+
+<main>
+    <div class="container">
+
+        <!-- Welcome Section -->
+       
+            <% if (user) { %>
+                <h4>Well done, <%= user.username || user.name %>!</h4>
+                <p><strong>Name:</strong> <%= user.name || 'N/A' %></p>
+                <p><strong>Last Name:</strong> <%= user.last_name || 'N/A' %></p>
+                <p><strong>Username:</strong> <%= user.username || 'N/A' %></p>
+
+                
+ <p>Please <a href="/"> login</a> </p>
+
+ 
+            
+
+        <% } %>
+
+    </div>
+</main>
+
+<%- include('partials/footer') %>

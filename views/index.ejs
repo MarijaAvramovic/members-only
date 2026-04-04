@@ -15,8 +15,8 @@
             
    
     <form class="addmessage-form"  method="POST" action="/add-message">
-        <input name="title" placeholder="Title" required type="text" />
-        <textarea name="text" placeholder="Message text" required></textarea>
+        <input name="title" placeholder="Title..." required type="text" />
+        <textarea name="text" placeholder="Message text..." required></textarea>
         <button type="submit">Send</button>
     </form>
         <% } else { %>
@@ -39,13 +39,13 @@
         <% } %>
 </div>
 
-            <div>
-                <h1>Messages</h1>
+            <div class="messagesAll" >
+             
 
      
         <% messages.forEach(message => { %>
-             <div>
-                <h2><%= message.title %></h2>
+             <div class="message-card">
+                <h4><%= message.title %></h4>
                 
                 <p><%= message.text %></p>
 
@@ -53,10 +53,10 @@
 
 
 
-                <p>
+                <p style="color: rgb(8, 2, 29); background-color: rgb(222, 235, 248); border-radius: 2%;">
                     
                      <% if (user && (message.user_id === user.id || user.membership_status === 'member' || user.is_admin === true)) { %>
-                        Posted by: <%= message.user_username %>
+                        Posted by: <%= message.name.charAt(0).toUpperCase() + message.name.slice(1) %> <%= message.last_name.charAt(0).toUpperCase() + message.last_name.slice(1)%>
                       <%= message.timestamp.toLocaleDateString() %> 
                <%= message.timestamp.toLocaleTimeString()   %> 
                <% } %>
@@ -68,20 +68,21 @@
                 </p>
 
 
-
+  <% if (user && user.is_admin) { %>
+                       <a href="/messages/<%= message.id %>/delete" 
+                        class="delete-btn"
+       onclick="return confirm('Are you sure you want to delete this message?')">
+         <i class="fa-solid fa-trash"></i>
+    </a>
+                        <% } %>
 
 
 
                 
-             </div><span>          
+            </div>        
             
-                 <% if (user && user.is_admin) { %>
-                       <a href="/messages/<%= message.id %>/delete" 
-       onclick="return confirm('Are you sure you want to delete this message?')">
-        Delete
-    </a>
-                        <% } %>
-            </span>
+                
+           
         <% }); %>
             </div>
      

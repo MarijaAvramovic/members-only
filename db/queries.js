@@ -1,11 +1,11 @@
 const pool = require('../db/pool');
 
 async function getAllMessages() {
-    const result = await pool.query(`
-        SELECT m.*, u.username AS user_username
-        FROM messages m
-        LEFT JOIN users u ON m.user_id = u.id
-`);     
+     const result = await pool.query(`
+    SELECT m.*, u.*
+    FROM messages m
+    LEFT JOIN users u ON m.user_id = u.id
+  `);   
     return result.rows;
 }
 

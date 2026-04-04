@@ -8,6 +8,7 @@ const db = require('../db/queries');
 async function getMessages(req, res) {
     try {
         const messages = await db.getAllMessages();
+        console.log(messages)
         res.render('index', { messages });
         
     } catch (error) {
@@ -28,7 +29,7 @@ async function createUser(req, res) {
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await db.createUser(name, last_name, username, hashedPassword);
-        res.render('dashboard', { user: newUser, errors: [] , errorsJoin: [], errorsAdmin: []});
+        res.render('wellDone', { user: newUser, errors: [] , errorsJoin: [], errorsAdmin: []});
     } catch (error) {
         console.error('Error creating user:', error);
         res.status(500).send('Internal Server Error');
