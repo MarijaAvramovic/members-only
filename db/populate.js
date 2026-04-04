@@ -42,9 +42,10 @@ VALUES
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString: "postgresql://marijaavramovic:@localhost:5432/members_only"
-    // or use: connectionString: process.argv[2]
+     connectionString: process.argv[2]
   });
+
+   // or use: "postgresql://marijaavramovic:@localhost:5432/members_only"
 
   await client.connect();
   await client.query(SQLCategories);
